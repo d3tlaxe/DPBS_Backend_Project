@@ -24,6 +24,12 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<ClassRoomManager>().As<IClassRoomService>().SingleInstance();
             builder.RegisterType<EfClassRoomDal>().As<IClassRoomDal>().SingleInstance();
 
+            builder.RegisterType<StudentLessonManager>().As<IStudentLessonService>().SingleInstance();
+            builder.RegisterType<EfStudentLessonDal>().As<IStudentLessonDal>().SingleInstance();
+
+            builder.RegisterType<LessonAndPrelectorManager>().As<ILessonAndPrelectorPairService>().SingleInstance();
+            builder.RegisterType<EfLessonAndPrelectorPairDal>().As<ILessonAndPrelectorPairDal>().SingleInstance();
+
 
         }
     }

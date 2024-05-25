@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Entities.Dtos
 {
-    public class Lesson : IEntity
+    public class LessonsOfPrelectorDto : IDto
     {
         public int Id { get; set; }
+        public int LessonId { get; set; }
+        public int UserId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public int Period { get; set; }

@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Entities.Dtos
 {
-    public class Lesson : IEntity
+    public class LessonForAddDto : IDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public int Period { get; set; }
@@ -17,5 +16,6 @@ namespace Entities.Concrete
         public int LessonHours { get; set; }
         public int Capacity { get; set; }
         public bool isImperative { get; set; }
+        public int PrelectorId { get; set; }
     }
 }

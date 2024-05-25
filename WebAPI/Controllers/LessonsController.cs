@@ -2,6 +2,7 @@
 using Business.Constants;
 using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,7 @@ namespace WebAPI.Controllers
             _lessonService = lessonService;
         }
 
-        [HttpGet("getall")]
+        [HttpGet("getalllessons")]
         public IActionResult GetAll()
         {
             var result = _lessonService.GetAll();
@@ -31,9 +32,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Lesson lesson)
+        public IActionResult Add(LessonForAddDto lessonForAddDto)
         {
-            var result = _lessonService.Add(lesson);
+            var result = _lessonService.Add(lessonForAddDto);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,7 +66,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpGet("getbyid")]
+        [HttpGet("getbylessonid")]
         public IActionResult GetById(int lessonId)
         {
             var result = _lessonService.GetById(lessonId);
@@ -77,7 +78,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpGet("getbyname")]
+        [HttpGet("getbylessonname")]
         public IActionResult GetByName(string lessonName)
         {
             var result = _lessonService.GetByName(lessonName);

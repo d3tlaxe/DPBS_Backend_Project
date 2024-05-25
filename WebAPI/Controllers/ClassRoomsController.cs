@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
 
 
 
-        [HttpGet("getall")]
+        [HttpGet("getallclassrooms")]
         public IActionResult GetAll()
         {
             var result = _classRoomService.GetAll();

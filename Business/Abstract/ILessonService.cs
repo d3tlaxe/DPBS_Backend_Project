@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Business.Abstract
         IDataResult<List<Lesson>> GetByImperative(bool isImprerative);
         IDataResult<List<Lesson>> GetHighClassLessons(int myPeriod);
 
-        IResult Add(Lesson lesson);
+        IResult Add(LessonForAddDto lessonForAddDto);
         IResult Update(Lesson lesson);
 
         IResult Delete(Lesson lesson);  // Bu denenmedi

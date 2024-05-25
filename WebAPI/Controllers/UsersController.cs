@@ -27,14 +27,14 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            else if(!result.Success)                // Buraya else bloğunu ben ekledim denemek için
+            else if(!result.Success)                // Buraya else bloğunu ben ekledim denemek için. Çalıştı. 
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
 
-        [HttpGet("getall")]
+        [HttpGet("getallusers")]
         public IActionResult GetAll()
         {
             var result = _userService.GetAll();
@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("getstudentdetails")]
+        [HttpGet("getstudentwithdetails")]
         public IActionResult GetStudentDetails(int id) 
         {
             var result = _userService.GetStudentDetails(id);
@@ -57,7 +57,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("getprelectordetails")]
+        [HttpGet("getprelectorwithdetails")]
         public IActionResult GetPrelectorDetails(int id)
         {
             var result = _userService.GetPrelectorDetails(id);

@@ -18,8 +18,12 @@ namespace Business.Constants
         public static string LessonUpdated = "Ders Güncellendi";
 
         public static string ClassRoomAdded = "Deslik Eklendi";
-        internal static string ClassRoomUpdated = "Derslik Güncellendi";
-        internal static string ClassRoomDeleted = "Derslik Silindi";
-        internal static string ClassRoomsListed = "Derslikler Listelendi";
+        public static string ClassRoomUpdated = "Derslik Güncellendi";
+        public static string ClassRoomDeleted = "Derslik Silindi";
+        public static string ClassRoomsListed = "Derslikler Listelendi";
+
+        public static string PrelectorsLessonsListed = "Öğretim Görevlisine Atanan Dersler Listelendi";
+        public static string LessonsPrelectorsListed = "Dersi Veren Öğretim Görevlileri Listelendi";
+        public static string lessonAndPrelectorPairAdded = "Ders ve Öğretim Görevlisi Çifti Eklendi";
     }
 }

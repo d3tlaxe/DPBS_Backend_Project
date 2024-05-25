@@ -3,6 +3,7 @@ using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +16,40 @@ namespace Business.Concrete
     {
 
         ILessonDal _lessonDal;
+        ILessonAndPrelectorPairDal _lessonAndPrelectorPairDal;
 
-        public LessonManager(ILessonDal lessonDal)
+        public LessonManager(ILessonDal lessonDal, ILessonAndPrelectorPairDal lessonAndPrelectorPairDal)
         {
             _lessonDal = lessonDal;
+            _lessonAndPrelectorPairDal = lessonAndPrelectorPairDal;
         }
 
-        public IResult Add(Lesson lesson)
+        public IResult Add(LessonForAddDto lessonForAddDto)
         {
+            Lesson lesson = new Lesson
+            {
+                Name = lessonForAddDto.Name,
+                Code = lessonForAddDto.Code,
+                Period = lessonForAddDto.Period,
+                Credit = lessonForAddDto.Credit,
+                LessonHours = lessonForAddDto.LessonHours,
+                Capacity = lessonForAddDto.Capacity,
+                isImperative = lessonForAddDto.isImperative
+            };
             _lessonDal.Add(lesson);
+
+
+            List<Lesson> recievedLessons = _lessonDal.GetAll();
+            int lastIndex = recievedLessons.Count - 1;
+            int lastItemId = recievedLessons[lastIndex].Id;
+            LessonAndPrelectorPair lessonAndPrelectorPair = new LessonAndPrelectorPair
+            {
+                LessonId = lastItemId,
+                UserId = lessonForAddDto.PrelectorId,
+            };
+
+            _lessonAndPrelectorPairDal.Add(lessonAndPrelectorPair);
+
             return new SuccessResult(Messages.LessonAdded);
         }
 
