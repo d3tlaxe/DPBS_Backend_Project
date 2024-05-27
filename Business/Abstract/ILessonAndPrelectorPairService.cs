@@ -15,6 +15,11 @@ namespace Business.Abstract
 
         IDataResult<List<PrelectorsOfLessonDto>> GetByLessonId(int lessonId);
 
-        IResult Add(LessonAndPrelectorPair lessonAndPrelectorPair);
+        //IResult Add(LessonAndPrelectorPair lessonAndPrelectorPair);
+        IResult AddByParameter(int lessonId, int prelectorId);
+        IDataResult<bool> isPairExist(int lessonId, int prelectorId);
+
+        IDataResult<int> GetPairId(int lessonId, int prelectorId);
+
     }
 }

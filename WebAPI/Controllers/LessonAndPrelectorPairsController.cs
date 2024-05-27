@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,18 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result.Message);
+        }
+
+
+        [HttpPost("addprelectortolesson")]
+        public IActionResult Add(int lessonId, int prelectorId)
+        {
+            var result = _lessonAndPrelectorService.AddByParameter(lessonId, prelectorId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Core.DataAccess.EntityFramework;
+using Core.Entities;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.Dtos;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +64,21 @@ namespace DataAccess.Concrete.EntityFramework
                              };
 
                 return result.ToList();
+            }
+        }
+
+        public void AddByParameter(int lessonId, int prelectorId)
+        {
+            using (MyContext context = new MyContext())
+            {
+                LessonAndPrelectorPair pair = new LessonAndPrelectorPair
+                {
+                    LessonId = lessonId,
+                    UserId = prelectorId
+                };
+                var addedEntity = context.Entry(pair);
+                addedEntity.State = EntityState.Added;
+                context.SaveChanges();
             }
         }
     }

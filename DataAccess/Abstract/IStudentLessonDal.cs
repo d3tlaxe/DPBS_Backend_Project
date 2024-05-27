@@ -13,5 +13,12 @@ namespace DataAccess.Abstract
     public interface IStudentLessonDal : IEntityRepository<StudentLesson>
     {
         List<StudentLessonDto> GetByUserId(int userId);
+        List<ProgramForStudentDto> GetProgramForStudent(int studentId);
+
+        List<StudentLesson> GetByPairId(int pairId);
+
+
+
+
     }
 }

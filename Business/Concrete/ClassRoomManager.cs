@@ -44,7 +44,7 @@ namespace Business.Concrete
 
         public IDataResult<List<ClassRoom>> GetBiggerThanParameter(int capacity)
         {
-            return new SuccessDataResult<List<ClassRoom>>(_classRoomDal.GetBiggerThanParameter(capacity));
+            return new SuccessDataResult<List<ClassRoom>>(_classRoomDal.GetBiggerThanParameter(capacity), Messages.BiggerClassRoomsListed);
         }
 
         public IDataResult<ClassRoom> GetByName(string name)

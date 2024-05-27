@@ -30,6 +30,26 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<LessonAndPrelectorManager>().As<ILessonAndPrelectorPairService>().SingleInstance();
             builder.RegisterType<EfLessonAndPrelectorPairDal>().As<ILessonAndPrelectorPairDal>().SingleInstance();
 
+            builder.RegisterType<LessonsAtClassRoomManager>().As<ILessonsAtClassRoomService>().SingleInstance();
+            builder.RegisterType<EfLessonsAtClassRoomDal>().As<ILessonsAtClassRoomDal>().SingleInstance();
+
+            builder.RegisterType<WeekDayManager>().As<IWeekDayService>().SingleInstance();
+            builder.RegisterType<EfWeekDayDal>().As<IWeekDayDal>().SingleInstance();
+
+            builder.RegisterType<LessonStartTimeManager>().As<ILessonStartTimeService>().SingleInstance();
+            builder.RegisterType<EfLessonStartTimeDal>().As<ILessonStartTimeDal>().SingleInstance();
+
+            builder.RegisterType<PrelectorAppellationManager>().As<IPrelectorAppellationService>().SingleInstance();
+            builder.RegisterType<EfPrelectorAppellationDal>().As<IPrelectorAppellationDal>().SingleInstance();
+
+            builder.RegisterType<PrelectorDetailManager>().As<IPrelectorDetailService>().SingleInstance();
+            builder.RegisterType<EfPrelectorDetailDal>().As<IPrelectorDetailDal>().SingleInstance();
+
+            builder.RegisterType<StudentDetailManager>().As<IStudentDetailService>().SingleInstance();
+            builder.RegisterType<EfStudentDetailDal>().As<IStudentDetailDal>().SingleInstance();
+
+            builder.RegisterType<StudentPeriodManager>().As<IStudentPeriodService>().SingleInstance();
+            builder.RegisterType<EfStudentPeriodDal>().As<IStudentPeriodDal>().SingleInstance();
 
         }
     }

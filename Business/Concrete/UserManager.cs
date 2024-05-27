@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -50,10 +51,16 @@ namespace Business.Concrete
             }
             else
             {
-                return new ErrorDataResult<User>();
+                return new ErrorDataResult<User>(Messages.UserNotFound);
             }
 
             
+        }
+
+        public IResult Add(User user)
+        {
+            _userDal.Add(user);
+            return new SuccessResult(Messages.UserAdded);
         }
     }
 }

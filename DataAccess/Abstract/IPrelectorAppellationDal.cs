@@ -1,6 +1,5 @@
 ﻿using Core.DataAccess;
 using Entities.Concrete;
-using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IUserDal : IEntityRepository<User>
+    public interface IPrelectorAppellationDal : IEntityRepository<PrelectorAppellation>
     {
-        List<StudentDetailDto> GetStudentDetails(int userId);
-
-        List<PrelectorDetailDto> GetPrelectorDetails(int userId);
-
     }
 }

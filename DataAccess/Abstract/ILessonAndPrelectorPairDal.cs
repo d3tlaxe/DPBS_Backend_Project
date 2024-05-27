@@ -14,5 +14,7 @@ namespace DataAccess.Abstract
     {
         List<LessonsOfPrelectorDto> GetByPrelectorId(int prelectorId);
         List<PrelectorsOfLessonDto> GetByLessonId(int lessonId);
+
+        void AddByParameter(int lessonId, int prelectorId);
     }
 }

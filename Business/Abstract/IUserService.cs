@@ -21,7 +21,16 @@ namespace Business.Abstract
         IDataResult<List<StudentDetailDto>> GetStudentDetails(int userId);
         IDataResult<List<PrelectorDetailDto>> GetPrelectorDetails(int userId);
 
-        
+
+        //Alttakilerden sadece add yazıldı 
+        IResult Add(User user);
+        //IResult Update(User user);
+        //
+        //IResult Delete(User user);
+
+
+
+
 
 
 

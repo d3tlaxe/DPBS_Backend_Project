@@ -23,7 +23,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<StudentDetail> StudentDetails { get; set; }
         public DbSet<PrelectorDetail> PrelectorDetails { get; set; }
         public DbSet<PrelectorAppellation> PrelectorAppellations { get; set; }
-        public DbSet<LessonAtClassRoom> LessonAtClassRooms { get; set; }
+        public DbSet<LessonAtClassRoom> LessonsAtClassRooms { get; set; }
         public DbSet<LessonAndPrelectorPair> LessonAndPrelectorPairs { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<ClassRoom> ClassRooms { get; set; }

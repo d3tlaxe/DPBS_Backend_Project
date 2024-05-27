@@ -13,10 +13,15 @@ namespace Business.Abstract
     {
 
         IDataResult<List<StudentLessonDto>> GetByUserId(int userId);
-        
-        IResult Add(StudentLesson studentLesson);
+
+        IDataResult<List<ProgramForStudentDto>> GetProgramForStudent(int studentId);
+
+        IResult Add(int studentId, int lessonId, int prelectorId);
         IResult Update(StudentLesson studentLesson);
 
-        IResult Delete(StudentLesson studentLesson);  // Bu denenmedi
+        IResult Delete(StudentLesson studentLesson);
+
+        IDataResult<int> GetStudentCount(int lessonId, int prelectorId);
+
     }
 }

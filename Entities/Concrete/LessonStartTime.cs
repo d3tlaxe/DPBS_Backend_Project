@@ -10,6 +10,6 @@ namespace Entities.Concrete
     public class LessonStartTime : IEntity
     {
         public int Id { get; set; }
-        public int StartTime { get; set; }
+        public string StartTime { get; set; }
     }
 }

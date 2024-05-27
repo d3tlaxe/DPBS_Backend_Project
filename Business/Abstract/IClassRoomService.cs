@@ -16,7 +16,6 @@ namespace Business.Abstract
         IDataResult<ClassRoom> GetByName(string name);
         IResult Add(ClassRoom classRoom);
         IResult Update(ClassRoom classRoom);
-
         IResult Delete(ClassRoom classRoom);  // Bu denenmedi
 
 

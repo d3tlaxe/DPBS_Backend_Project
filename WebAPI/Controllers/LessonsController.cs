@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-
+        /*
         [HttpPost("delete")]
         public IActionResult Delete(Lesson lesson)
         {
@@ -53,6 +53,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        */
 
         [HttpPost("update")]
         public IActionResult Update(Lesson lesson)

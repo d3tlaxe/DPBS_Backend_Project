@@ -10,11 +10,14 @@ namespace WebAPI.Controllers
     public class UsersController : ControllerBase
     {
         IUserService _userService;
+        IPrelectorDetailService _prelectorDetailService;
+        IStudentDetailService _studentDetailService;
 
-
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, IPrelectorDetailService prelectorDetailService, IStudentDetailService studentDetailService)
         {
             _userService = userService;
+            _prelectorDetailService = prelectorDetailService;
+            _studentDetailService = studentDetailService;
         }
 
 
@@ -66,6 +69,30 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result.Message);
+        }
+
+
+        [HttpPost("addprelector")]
+        public IActionResult AddPrelector(PrelectorForAddDto prelectorForAddDto)
+        {
+            var result = _prelectorDetailService.Add(prelectorForAddDto);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+        [HttpPost("addstudent")]
+        public IActionResult AddStudent(StudentForAddDto studentForAddDto)
+        {
+            var result = _studentDetailService.Add(studentForAddDto);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
     }

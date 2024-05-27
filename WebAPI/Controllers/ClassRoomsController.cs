@@ -76,16 +76,17 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("getbyname")]
-        public IActionResult GetByName(string roomName)
-        {
-            var result = _classRoomService.GetByName(roomName);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result.Message);
-        }
+
+        //[HttpGet("getbyname")]
+        //public IActionResult GetByName(string roomName)
+        //{
+        //    var result = _classRoomService.GetByName(roomName);
+        //    if (result.Success)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    return BadRequest(result.Message);
+        //}
 
 
 
