@@ -4,6 +4,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,19 @@ namespace Business.Concrete
         public LessonsAtClassRoomManager(ILessonsAtClassRoomDal lessonAtClassRoomDal)
         {
             _lessonAtClassRoomDal = lessonAtClassRoomDal;
+        }
+
+        public IResult Add(LessonAtClassRoom lessonAtClassRoom)
+        {
+            if (lessonAtClassRoom.LessonAndPrelectorPairId != 0)
+            {
+                _lessonAtClassRoomDal.Add(lessonAtClassRoom);
+                return new SuccessResult(Messages.LessonAtClassRoomAdded);
+            }
+            else
+            {
+                return new ErrorResult(Messages.IdCantZero);
+            }
         }
 
         public IDataResult<bool> isClassRoomAvailable(int classRoomId, int lessonDay, int LessonStartTime)

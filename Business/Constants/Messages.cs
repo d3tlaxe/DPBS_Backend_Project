@@ -51,5 +51,8 @@ namespace Business.Constants
         public static string StudentCountShowed = "Dersi Seçen Öğrenci Sayısı Döndürüldü";
 
         public static string StudentLessonAdded = "Öğrencinin Dersi Eklendi";
+
+        public static string LessonAtClassRoomAdded = "Öğretim Görevlisi İçin Ders Planlandı";
+        public static string IdCantZero = "LessonAndPrelectorPairId 0 olamaz";
     }
 }
