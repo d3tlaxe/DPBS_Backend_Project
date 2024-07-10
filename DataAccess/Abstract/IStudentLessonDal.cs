@@ -17,7 +17,7 @@ namespace DataAccess.Abstract
 
         List<StudentLesson> GetByPairId(int pairId);
 
-
+       
 
 
     }

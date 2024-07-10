@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            else if(!result.Success)                // Buraya else bloğunu ben ekledim denemek için. Çalıştı. 
+            else if(!result.Success)               
             {
                 return Ok(result);
             }

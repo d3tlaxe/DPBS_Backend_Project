@@ -21,5 +21,7 @@ namespace Business.Abstract
 
         IDataResult<int> GetPairId(int lessonId, int prelectorId);
 
+
+
     }
 }

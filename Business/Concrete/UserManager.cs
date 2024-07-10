@@ -59,8 +59,25 @@ namespace Business.Concrete
 
         public IResult Add(User user)
         {
-            _userDal.Add(user);
-            return new SuccessResult(Messages.UserAdded);
+
+            List<User> users = _userDal.GetAll();
+
+
+            if (_userDal.Get(u => u.EMail == user.EMail) == null)
+            {
+                _userDal.Add(user);
+                return new SuccessResult(Messages.UserAdded);
+            }
+
+
+
+            //if (users.Find(u => u.EMail == user.EMail) == null)
+            //{
+            //    _userDal.Add(user);
+            //    return new SuccessResult(Messages.UserAdded);
+            //}
+
+            return new SuccessResult("Bu Kayıt Zaten Mevcut. Lütfen Bilgileri Kontrol Edin.");
         }
     }
 }

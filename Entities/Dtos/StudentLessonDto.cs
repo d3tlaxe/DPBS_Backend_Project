@@ -11,6 +11,7 @@ namespace Entities.Dtos
     {
         public int Id { get; set; }
         public int StudentId { get; set; }
+        public int LessonId { get; set; }
         public string LessonName { get; set; }
         public string LessonCode { get; set; }
         public int Period { get; set; }

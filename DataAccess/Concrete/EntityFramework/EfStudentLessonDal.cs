@@ -13,6 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfStudentLessonDal : EfEntityRepositoryBase<StudentLesson, MyContext>, IStudentLessonDal
     {
+
         public List<StudentLesson> GetByPairId(int pairId)
         {
             using (MyContext context = new MyContext())
@@ -47,6 +48,7 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  Id = sl.Id,
                                  StudentId = sl.UserId,
+                                 LessonId = l.Id,
                                  LessonName = l.Name,
                                  LessonCode = l.Code,
                                  Period = l.Period,

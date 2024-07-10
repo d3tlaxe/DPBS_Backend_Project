@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Core.Utilities.Results;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.Dtos;
 using System;
@@ -17,6 +18,9 @@ namespace DataAccess.Abstract
 
         void AddByParameter(int lessonId, int prelectorId);
 
+
         
+
+
     }
 }

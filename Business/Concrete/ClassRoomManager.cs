@@ -27,8 +27,15 @@ namespace Business.Concrete
 
         public IResult Add(ClassRoom classRoom)
         {
-            _classRoomDal.Add(classRoom);
-            return new SuccessResult(Messages.ClassRoomAdded);
+
+            if (_classRoomDal.Get(cr => cr.RoomName == classRoom.RoomName) == null)
+            {
+                _classRoomDal.Add(classRoom);
+                return new SuccessResult(Messages.ClassRoomAdded);
+            }
+            return new SuccessResult("Bu İsimle Derslik Mevcut");
+
+
         }
 
         public IResult Delete(ClassRoom classRoom)

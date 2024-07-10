@@ -36,21 +36,35 @@ namespace Business.Concrete
                 Capacity = lessonForAddDto.Capacity,
                 isImperative = lessonForAddDto.isImperative
             };
-            _lessonDal.Add(lesson);
 
 
-            List<Lesson> recievedLessons = _lessonDal.GetAll();
-            int lastIndex = recievedLessons.Count - 1;
-            int lastItemId = recievedLessons[lastIndex].Id;
-            LessonAndPrelectorPair lessonAndPrelectorPair = new LessonAndPrelectorPair
+            List<Lesson> listofLesson = _lessonDal.GetAll();
+
+            if(listofLesson.Find(l => l.Name == lesson.Name && l.Code == lesson.Code)==null)
             {
-                LessonId = lastItemId,
-                UserId = lessonForAddDto.PrelectorId,
-            };
+                _lessonDal.Add(lesson);
+                List<Lesson> recievedLessons = _lessonDal.GetAll();
+                int lastIndex = recievedLessons.Count - 1;
+                int lastItemId = recievedLessons[lastIndex].Id;
+                LessonAndPrelectorPair lessonAndPrelectorPair = new LessonAndPrelectorPair
+                {
+                    LessonId = lastItemId,
+                    UserId = lessonForAddDto.PrelectorId,
+                };
 
-            _lessonAndPrelectorPairDal.Add(lessonAndPrelectorPair);
+                _lessonAndPrelectorPairDal.Add(lessonAndPrelectorPair);
 
-            return new SuccessResult(Messages.LessonAdded);
+                return new SuccessResult(lesson.Name + " " + Messages.LessonAdded);
+            }
+          
+                return new SuccessResult("Bu Ders Zaten Mevcut!!!");
+            
+
+
+            
+
+
+            
         }
 
         public IResult Delete(Lesson lesson)

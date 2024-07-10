@@ -34,27 +34,55 @@ namespace Business.Concrete
                 Password = prelectorForAddDto.Password,
                 UserTypeId = 2
             };
-            _userDal.Add(user);
 
 
-
-            List<User> recievedUsers = _userDal.GetAll();
-            int lastIndex = recievedUsers.Count - 1;
-            int lastItemId = recievedUsers[lastIndex].Id;
-            PrelectorDetail prelectorDetail = new PrelectorDetail
+            if (_userDal.Get(u => u.EMail == user.EMail) == null)
             {
-                UserId = lastItemId,
-                TCNo = prelectorForAddDto.TCNo,
-                Name = prelectorForAddDto.Name,
-                Surname = prelectorForAddDto.Surname,
-                AppellationId = prelectorForAddDto.AppellationId,
-                Phone = prelectorForAddDto.Phone,
-                Address = prelectorForAddDto.Address
-            };
+                _userDal.Add(user); 
+                
+                List<User> recievedUsers = _userDal.GetAll();
+                int lastIndex = recievedUsers.Count - 1;
+                int lastItemId = recievedUsers[lastIndex].Id;
 
-            _prelectorDetailDal.Add(prelectorDetail);
+                if (_prelectorDetailDal.Get(pd => pd.TCNo == prelectorForAddDto.TCNo) == null)
+                {
+                    PrelectorDetail prelectorDetail = new PrelectorDetail
+                    {
+                        UserId = lastItemId,
+                        TCNo = prelectorForAddDto.TCNo,
+                        Name = prelectorForAddDto.Name,
+                        Surname = prelectorForAddDto.Surname,
+                        AppellationId = prelectorForAddDto.AppellationId,
+                        Phone = prelectorForAddDto.Phone,
+                        Address = prelectorForAddDto.Address
+                    };
+                    _prelectorDetailDal.Add(prelectorDetail);
+                    return new SuccessResult(Messages.PrelectorAdded);
+                }
+                else
+                {
+                    int userId = _userDal.Get(u => u.EMail == user.EMail && u.Password == user.Password).Id;
 
-            return new SuccessResult(Messages.PrelectorAdded);
+                    User deletedUser = new User
+                    {
+                        Id = userId,
+                        EMail = user.EMail,
+                        Password = user.Password,
+                        UserTypeId = user.UserTypeId
+                    };
+                    _userDal.Delete(deletedUser);
+                    // Burada Eklenen Kullanıcı Silinecek
+                }
+                
+            }
+
+            return new SuccessResult("Bu Öğretim Görevlisi Zaten Mevcut Lütfen Bilgileri Kontrole Edin");
+
+
+
+
+
+
 
 
 

@@ -12,7 +12,7 @@ namespace Business.Constants
         public static string PasswordError = "Parola Yanlış";
         public static string SuccessfulLogin = "Giriş başarılı";
         public static string UserAlreadyExists = "Kullanıcı zaten var";
-        public static string LessonAdded = "Ders Eklendi";
+        public static string LessonAdded = "Dersi Eklendi";
         public static string LessonDeleted = "Ders Silindi";
         public static string LessonListed = "Dersler Listelendi";
         public static string LessonUpdated = "Ders Güncellendi";
@@ -24,7 +24,7 @@ namespace Business.Constants
 
         public static string PrelectorsLessonsListed = "Öğretim Görevlisine Atanan Dersler Listelendi";
         public static string LessonsPrelectorsListed = "Dersi Veren Öğretim Görevlileri Listelendi";
-        public static string lessonAndPrelectorPairAdded = "Ders ve Öğretim Görevlisi Çifti Eklendi";
+        public static string lessonAndPrelectorPairAdded = "BU Derse Yeni Öğretim Görevlisi Başarıyla Tanımlandı";
         public static string StudentProgramListed = "Öğrencinin Ders Programı Listelendi";
         public static string BiggerClassRoomsListed = "Verilen Parametreden Büyük Olan Derslikler Listelendi";
         internal static string studentLessonAdded = "Öğrencinin Dersi Eklendi";
@@ -37,7 +37,7 @@ namespace Business.Constants
         public static string WeekDayListed = "Haftanın Günleri Listelendi";
         public static string LessonStartTimeListed = "Günlük Ders Saatleri Listelendi";
 
-        public static string ThereisAPair = "Böyle Bir Kayıt Var";
+        public static string ThereisAPair = "Bu Öğretim Görevlisi Bu Ders İçin Daha Önce Atanmış";
         public static string ThereisNotPair = "Böyle Bir Kayıt Yok";
 
         public static string UserAdded = "Kullanıcı Eklendi";

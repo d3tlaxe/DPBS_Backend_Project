@@ -32,25 +32,44 @@ namespace Business.Concrete
         }
         */
 
+
+        public bool isExistingLesson(List<StudentLessonDto> studentLessons, int lessonId)
+        {
+            bool isExisting = false;
+            for (int i = 0; i < studentLessons.Count; i++)
+            {
+                if(studentLessons[i].LessonId == lessonId)
+                {
+                    isExisting = true;
+                }
+            }
+            return isExisting;
+        }
+
+
+
+
         public IResult Add(int studentId, int lessonId, int prelectorId)
         {
 
-            LessonAndPrelectorPair pair = new LessonAndPrelectorPair { LessonId = lessonId, UserId = prelectorId };
-            _lessonAndPrelectorPairDal.AddByParameter(lessonId,prelectorId);
-
-
-            List<LessonAndPrelectorPair> recievedPairs = _lessonAndPrelectorPairDal.GetAll();
-            int lastIndex = recievedPairs.Count - 1;
-            int lastItemId = recievedPairs[lastIndex].Id;
-            StudentLesson studentLesson = new StudentLesson
+            List<StudentLessonDto> studentLessons = _studentLessonDal.GetByUserId(studentId);
+            int pairId;
+            StudentLesson studentLesson;
+            if (isExistingLesson(studentLessons, lessonId) == false) 
             {
-                UserId = studentId,
-                PairId = lastItemId
-            };
-
-            _studentLessonDal.Add(studentLesson);
-
-            return new SuccessResult(Messages.StudentLessonAdded);
+                pairId = _lessonAndPrelectorPairDal.Get(lapp => lapp.LessonId == lessonId && lapp.UserId == prelectorId).Id;
+                studentLesson = new StudentLesson
+                {
+                    UserId = studentId,
+                    PairId = pairId
+                };
+                _studentLessonDal.Add(studentLesson);
+                return new SuccessResult(Messages.StudentLessonAdded);
+            }
+            else
+            {
+                return new SuccessResult("Bu Ders Zaten Seçildi. Lütfen Diğer Dersler İçin Seçim Yapınız");
+            }
         }
 
         public IResult Delete(StudentLesson studentLesson)

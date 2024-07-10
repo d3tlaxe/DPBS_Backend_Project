@@ -51,6 +51,11 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<StudentPeriodManager>().As<IStudentPeriodService>().SingleInstance();
             builder.RegisterType<EfStudentPeriodDal>().As<IStudentPeriodDal>().SingleInstance();
 
+
+            builder.RegisterType<DashBoardManager>().As<IDashBoardService>().SingleInstance();
+
+
+
         }
     }
 }

@@ -5,6 +5,7 @@ using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using System;
 
 namespace WebAPI
 {
@@ -36,8 +37,16 @@ namespace WebAPI
                 });
 
 
-            builder.Services.AddCors();         //frontend tarafını tanıması için kullanacağız
+            //builder.Services.AddCors();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });         //frontend tarafını tanıması için kullanacağız
 
 
 
@@ -50,19 +59,27 @@ namespace WebAPI
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+
+                
+
             }
 
 
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());      /// Frontend tarafına istekler için izin verdik
+            //app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());      /// Frontend tarafına istekler için izin verdik
 
-
+            app.UseCors("AllowAll");
+                
 
 
 
             app.UseHttpsRedirection();
 
+
+
             app.UseAuthorization();
+
+
 
 
             app.MapControllers();

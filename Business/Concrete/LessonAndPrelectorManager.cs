@@ -33,16 +33,29 @@ namespace Business.Concrete
 
         public IResult AddByParameter(int lessonId, int prelectorId)
         {
-            if (isPairExist(lessonId,prelectorId).Data == false)
+
+            //List<LessonAndPrelectorPair> pairList = _lessonAndPrelectorPairDal.GetAll();
+
+            //if (pairList.Find(pl => pl.LessonId == lessonId && pl.UserId == prelectorId) == null)
+            //{
+            //    _lessonAndPrelectorPairDal.AddByParameter(lessonId, prelectorId);
+            //    return new SuccessResult(Messages.lessonAndPrelectorPairAdded);
+            //}
+            //return new SuccessResult("Bu Öğretim Görevlisi Daha Önce Bu Ders İçin Atanmış");
+
+
+
+
+            if (isPairExist(lessonId, prelectorId).Data == false)
             {
                 _lessonAndPrelectorPairDal.AddByParameter(lessonId, prelectorId);
                 return new SuccessResult(Messages.lessonAndPrelectorPairAdded);
             }
             else
             {
-                return new ErrorResult(Messages.ThereisAPair);
+                return new SuccessResult(Messages.ThereisAPair);
             }
-            
+
         }
 
         public IDataResult<List<PrelectorsOfLessonDto>> GetByLessonId(int lessonId)
@@ -66,9 +79,11 @@ namespace Business.Concrete
             }
             else
             {
-                return new ErrorDataResult<int>(pairId, "Dersi seçen öğrenci bulunamadı");
+                return new ErrorDataResult<int>(pairId, "Dersi Veren Öğretim Görevlisi bulunamadı");
             }
         }
+
+
 
         public IDataResult<bool> isPairExist(int lessonId, int prelectorId)
         {
